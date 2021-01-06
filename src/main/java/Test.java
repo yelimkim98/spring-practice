@@ -1,6 +1,8 @@
-import java.util.Collection;
+import config.AppConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import spring.User;
+import spring.UserService;
 
 public class Test {
 
