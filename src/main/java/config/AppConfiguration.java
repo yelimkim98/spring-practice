@@ -1,25 +1,21 @@
 package config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import spring.HashMapUserDao;
-import spring.MySqlUserDao;
+import org.springframework.context.annotation.Configuration;
 import spring.UserDao;
 import spring.UserService;
 
+@Configuration
 public class AppConfiguration {
 
     @Bean
-    public UserDao hashMapUserDao() {
-        return new HashMapUserDao();
-    }
-
-    @Bean
-    public UserDao mySqlUserDao() {
-        return new MySqlUserDao();
+    public UserDao userDao() {
+        return new UserDao();
     }
 
     @Bean
     public UserService userService() {
-        return new UserService();
+        return new UserService(userDao());
     }
 }

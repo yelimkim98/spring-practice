@@ -1,10 +1,19 @@
 package spring;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.stereotype.Component;
 
-public interface UserDao {
+public class UserDao {
 
-    void addUser(User user);
+    private Map<String, User> usersByEmail = new HashMap<>();
 
-    Collection<User> findAll();
+    public void addUser(User user) {
+        usersByEmail.put(user.getEmail(), user);
+    }
+
+    public Collection<User> findAll() {
+        return usersByEmail.values();
+    }
 }
